@@ -1,0 +1,13 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - yarn install
+        - yarn generate
+  artifacts:
+    baseDirectory: /.output/public
+    files:
+      - "**/*"
+  cache:
+    paths: []
