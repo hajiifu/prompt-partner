@@ -151,7 +151,7 @@ watch(currentLine, (line) => {
 </script>
 <template>
   <main class="h-screen bg-slate-800 text-white flex flex-col">
-    <div class="h-24 flex justify-between p-4">
+    <div class="min-h-24 xs:flex-col md:flex justify-between p-4">
       <div class="flex items-center gap-x-4">
         <button
           type="button"
@@ -177,7 +177,7 @@ watch(currentLine, (line) => {
         </div>
       </div>
 
-      <div class="flex gap-x-4">
+      <div class="flex-col gap-x-4">
         <label class="flex flex-col">
           配役
           <select
@@ -193,8 +193,8 @@ watch(currentLine, (line) => {
           Act
           <select
             v-model="actIdx"
-            name="scenes"
-            id="scene-selector"
+            name="acts"
+            id="act-selector"
             class="text-black w-48 px-4 grow"
             @change="
               nodeIdx = 0;
