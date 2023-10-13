@@ -1,5 +1,6 @@
 import jsdom from "jsdom";
 import fs from "fs";
+import path from "path";
 
 const jsDOM = new jsdom.JSDOM();
 const parser = new jsDOM.window.DOMParser();
@@ -71,6 +72,8 @@ export default async function () {
 
       // scripts.jsonとしてファイルに書き出す
       const scriptsJson = JSON.stringify(scriptData, null, 2);
-      fs.writeFileSync("./assets/scripts.json", scriptsJson);
+      const wpath = path.resolve(__dirname, "../assets/scripts.json");
+      console.log("write:", wpath);
+      fs.writeFileSync(wpath, scriptsJson);
     });
 }
