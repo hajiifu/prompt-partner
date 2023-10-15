@@ -17,7 +17,7 @@ const lineIdx = ref(0);
 const currentLine = computed(() => currentNode.value.text[lineIdx.value]);
 
 const role = ref("ピエール");
-const roles = ref(["ピエール", "M.L.H.", "V", "VI", "m.l.h."]);
+const roles = ref(["ピエール", "M.L.H.", "V", "VI", "m.l.h.", "なし"]);
 
 /*
 
