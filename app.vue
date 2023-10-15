@@ -148,6 +148,34 @@ watch(currentLine, (line) => {
     speechSynthesis.speak(utrance);
   }, 100);
 });
+
+/*
+
+  起動ロックを使って、セリフを聞き続けている間画面がロックされないようにする
+
+*/
+let wakeLock: null | WakeLockSentinel = null;
+onMounted(() => {
+  if ("wakeLock" in navigator) {
+    navigator.wakeLock
+      .request("screen")
+      .then((_wakeLock) => {
+        wakeLock = _wakeLock;
+        console.log("wakeLock", wakeLock);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  // タブの表示切り替えで一度非表示になったあと戻ってきたとき、再度ロックする
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock !== null && document.visibilityState === "visible") {
+      wakeLock = await navigator.wakeLock.request("screen");
+    }
+  });
+});
 </script>
 <template>
   <main class="h-screen bg-slate-800 text-white flex flex-col">
