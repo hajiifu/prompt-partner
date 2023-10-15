@@ -9,6 +9,7 @@ export default defineNuxtConfig({
       meta: [
         // noindexの設定
         { name: "robots", content: "noindex" },
+        { name: "description", content: "セリフ覚えツール" },
       ],
     },
   },
